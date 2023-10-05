@@ -25,10 +25,10 @@ int main()
              num.bytes[2] == 0x34 && num.bytes[3] == 0x12)
     {
         std::cout << "0x12345678 is stored as little-endian" << std::endl;
-        std::cout << "a = 0x" << std::hex << static_cast<int>(num.bytes[3]) << std::endl;
-        std::cout << "b = 0x" << std::hex << static_cast<int>(num.bytes[2]) << std::endl;
-        std::cout << "c = 0x" << std::hex << static_cast<int>(num.bytes[1]) << std::endl;
-        std::cout << "d = 0x" << std::hex << static_cast<int>(num.bytes[0]) << std::endl;
+        std::cout << "a = 0x" << std::hex << static_cast<int>(num.bytes[0]) << std::endl;
+        std::cout << "b = 0x" << std::hex << static_cast<int>(num.bytes[1]) << std::endl;
+        std::cout << "c = 0x" << std::hex << static_cast<int>(num.bytes[2]) << std::endl;
+        std::cout << "d = 0x" << std::hex << static_cast<int>(num.bytes[3]) << std::endl;
     }
     else
     {
