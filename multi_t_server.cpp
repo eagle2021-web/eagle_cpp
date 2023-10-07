@@ -80,7 +80,7 @@ int main()
         printf("client ip=%s,port=%d\n", cli_ip, ntohs(client_addr.sin_port));
 
         if (connfd > 0) {
-            pthread_create(&thread_id, NULL, client_process, (void *) connfd);
+            pthread_create(&thread_id, NULL, client_process, (void *)& connfd);
             pthread_detach(thread_id);
         }
     }

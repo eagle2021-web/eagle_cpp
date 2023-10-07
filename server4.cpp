@@ -26,7 +26,7 @@ int main() {
     SOCKADDR_IN addrSrv;
     addrSrv.sin_addr.s_addr = inet_addr("192.168.0.131");
     addrSrv.sin_family = AF_INET;
-    addrSrv.sin_port = htons(8000);  // 使用端口8000
+    addrSrv.sin_port = htons(8888);  // 使用端口8000
 
     // 绑定
     bind(sockSrv, (SOCKADDR*)&addrSrv, sizeof(SOCKADDR));
