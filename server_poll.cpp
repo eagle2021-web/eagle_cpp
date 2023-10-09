@@ -65,7 +65,8 @@ int main() {
 
     while (1) {
         // 执行poll操作
-        ret = poll(fds.data(), nfds, timeout);
+        ret = poll(fds.data(), nfds, 30000);
+        std::cout << "while循環" << std::endl;
         fprintf(stdout, "poll returned with ret value: %d\n", ret);
         if (ret == -1)
             errExit();
@@ -73,7 +74,9 @@ int main() {
             fprintf(stdout, "return no data\n");
         } else { // ret > 0
             // 检查是否有新客户端建立连接
+            printf("有新客户端建立连接\n");
             if (fds[0].revents & POLLIN) {
+                printf("有新客户端建立连接\n");
                 sockaddr_in childAddr{};
                 socklen_t childAddrLen;
                 int childSd = accept(sd, (sockaddr *) &childAddr, &(childAddrLen));
@@ -109,7 +112,7 @@ int main() {
 
                 // 读取请求数据
                 if (fds[i].revents & POLLIN) {
-                    char buffer[1024] = "";
+                    char buffer[17] = "";
                     while (true) {
                         ret = read(fds[i].fd, buffer, sizeof(buffer));
                         fprintf(stdout, "read on: %d returned with value: %d\n", i, ret);
@@ -134,7 +137,6 @@ int main() {
                         }
                     }
                 }
-                std::cout << 1111 << std::endl;
                 // 写事件，发送响应
                 if (fds[i].revents & POLLOUT) {
                     std::cout << 22222 << std::endl;

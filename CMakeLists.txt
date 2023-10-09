@@ -20,6 +20,10 @@ add_executable(client3 client3.cpp)
 add_executable(client4 client4.cpp)
 
 
-add_executable(tmp tmp.cpp)
+add_executable(data_size data_size.cpp)
 
+add_executable(server_http server_http.cpp)
+
+target_link_libraries(multi_t_server pthread)
+target_link_libraries(server_http pthread)
 

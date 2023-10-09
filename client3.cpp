@@ -25,18 +25,20 @@ int main() {
 //    printf("addrSrv.sin_addr.s_addr 地址：%p\n", &(addrSrv.sin_addr.s_addr));
 //    printf("addrSrv.sin_family 地址：%p\n", &(addrSrv.sin_family));
 //    printf("addrSrv.sin_port 地址：%p\n", &(addrSrv.sin_port));
-    err = connect(sockClient, (SOCKADDR *)&addrSrv, sizeof(SOCKADDR)); // 向服务器发出连接请求
+    err = connect(sockClient, (SOCKADDR *) &addrSrv, sizeof(SOCKADDR)); // 向服务器发出连接请求
     if (-1 == err) { // 判断连接是否成功
         printf("Failed to connect to the server. Please check whether the server is started.\n");
         getchar();
         return 0;
     }
     // 开始向服务器发送数据
-    char sendBuf[100];
+    char sendBuf[100] = {0};
     for (int i = 0; i < 10; i++) {
-        sprintf(sendBuf, "NO. %d I'm the client, 1 + 1 = 2\n", i + 1); // 组成字符串
+        sprintf(sendBuf, "1%d\n", i + 1); // 组成字符串
         send(sockClient, sendBuf, strlen(sendBuf) + 1, 0); // 发送字符串给服务器
+        printf("send %d, 长度%d\t；", i, int(strlen(sendBuf)) + 1);
         memset(sendBuf, 0, sizeof(sendBuf));
+        sleep(2);
     }
 
     char recvBuf[BUF_LEN];
@@ -50,7 +52,7 @@ int main() {
                 printf("%c", recvBuf[i]);
             printf("\n");
         } else if (iRes == 0) { // 对方关闭连接
-            puts ("\nThe server has closed the send connection.\n");
+            puts("\nThe server has closed the send connection.\n");
         } else {
             printf("recv failed: %d\n", errno);
             close(sockClient);

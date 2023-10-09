@@ -13,7 +13,7 @@
 
 // 返回自系统开机以来的毫秒数（tick）
 unsigned long GetTickCount() {
-    struct timeval tv;
+    struct timeval tv{};
     if (gettimeofday(&tv, NULL) != 0)
         return 0;
     return (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
@@ -23,7 +23,7 @@ int main() {
     char ip[] = "192.168.0.88";
     // 该IP地址是和本机同一网段的地址，但并不存在
     int err, port = 13334;
-    struct sockaddr_in server_address;
+    struct sockaddr_in server_address{};
     memset(&server_address, 0, sizeof(server_address));
     server_address.sin_family = AF_INET;
     in_addr_t dwIP = inet_addr(ip);

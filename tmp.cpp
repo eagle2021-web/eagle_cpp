@@ -1,31 +1,19 @@
-#include <cstdio>
+#include <sys/poll.h>
+#include <vector>
 #include <iostream>
-#include <string.h>
-#include <cstdlib>
+#include <cstring>
 
 using namespace std;
+int main(){
+    vector<pollfd> fds(100);
+    cout << fds.data()->events <<endl;
+    cout << fds.data()->fd  <<endl;
+    cout << fds.data()->revents <<endl;
+    char buf[1024];
+    buf[16] = "Content-Length:";
+    // 使用＼0进行分割
+    if (strcasecmp(buf, "Content-Length:") == 0){
+        cout << 11111 <<endl;
+    }
 
-struct MyData {
-    int nLen;
-    char* data;
-};
-
-int main() {
-    int nLen = 10;
-    char str[10] = "123456789";
-
-    cout << "Size of MyData: " << sizeof(MyData) << endl;
-    cout << "Size of char pointer: " << sizeof(char*) << endl;
-    MyData *myData = (MyData *)malloc(sizeof(MyData));
-    myData->nLen = nLen;
-    myData->data = (char *)malloc(nLen + 1);
-    memcpy(myData->data, str, nLen);
-    myData->data[nLen] = '\0'; // 添加字符串结尾的空字符
-    cout << "myData's Data is: " << myData->data << endl;
-    cout << "Size of MyData: " << sizeof(MyData) << endl;
-
-    free(myData->data);
-    free(myData);
-
-    return 0;
 }

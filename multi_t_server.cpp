@@ -13,7 +13,7 @@ void *client_process(void *arg)
     int recv_len = 0;
     char recv_buf[1024] = "";
     long tmp = (long) arg;
-    int connfd = (int) tmp;
+    int connfd = *((int*)arg);
 
     while ((recv_len = recv(connfd, recv_buf, sizeof(recv_buf), 0)) > 0) {
         printf("recv_buf: %s\n", recv_buf);
@@ -22,7 +22,7 @@ void *client_process(void *arg)
 
     printf("client closed!\n");
     close(connfd);
-    return NULL;
+    free(arg);
 }
 
 int main()
@@ -80,7 +80,9 @@ int main()
         printf("client ip=%s,port=%d\n", cli_ip, ntohs(client_addr.sin_port));
 
         if (connfd > 0) {
-            pthread_create(&thread_id, NULL, client_process, (void *)& connfd);
+            int* pconnfd = (int*)malloc(sizeof(int));
+            *pconnfd = connfd;
+            pthread_create(&thread_id, NULL, client_process, pconnfd);
             pthread_detach(thread_id);
         }
     }
