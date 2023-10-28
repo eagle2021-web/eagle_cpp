@@ -1,12 +1,13 @@
-// 1.ºê³£Á¿
+// 1.å®å¸¸é‡
 #define Day 7
 #include <iostream>
 
 int abc() {
-	// Day = 14 // ´íÎó£¬DayÊÇ³£Á¿£¬Ò»µ©ĞŞ¸Ä¾Í»á±¨´í
+	// Day = 14 // é”™è¯¯ï¼ŒDayæ˜¯å¸¸é‡ï¼Œä¸€æ—¦ä¿®æ”¹å°±ä¼šæŠ¥é”™
 	std::cout << Day << std::endl;
-	//2. constĞŞÊÎµÄ±äÁ¿
+	//2. constä¿®é¥°çš„å˜é‡
 	const int month = 12;
-	//month = 14 //±¨´í£¬±äÁ¿ÊÇ²»¿ÉÒÔĞŞ¸ÄµÄ
+    std::cout << month << std::endl;
+	//month = 14 //æŠ¥é”™ï¼Œå˜é‡æ˜¯ä¸å¯ä»¥ä¿®æ”¹çš„
 	return Day;
 }

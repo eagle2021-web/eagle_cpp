@@ -2,8 +2,8 @@
 using namespace std;
 
 void my_sizeof() {
-	cout << "short ÀàÐÍËùÕ¼ÄÚ´æ¿Õ¼äÎª£º" << sizeof(short) << endl;
-	cout << "int ÀàÐÍËùÕ¼ÄÚ´æ¿Õ¼äÎª£º" << sizeof(int) << endl;
-	cout << "long ÀàÐÍËùÕ¼ÄÚ´æ¿Õ¼äÎª£º" << sizeof(long) << endl;
-	cout << "long long ÀàÐÍËùÕ¼ÄÚ´æ¿Õ¼äÎª£º" << sizeof(long long) << endl;
+	cout << "short ç±»åž‹æ‰€å å†…å­˜ç©ºé—´ä¸ºï¼š" << sizeof(short) << endl;
+	cout << "int ç±»åž‹æ‰€å å†…å­˜ç©ºé—´ä¸ºï¼š" << sizeof(int) << endl;
+	cout << "long ç±»åž‹æ‰€å å†…å­˜ç©ºé—´ä¸ºï¼š" << sizeof(long) << endl;
+	cout << "long long ç±»åž‹æ‰€å å†…å­˜ç©ºé—´ä¸ºï¼š" << sizeof(long long) << endl;
 }
